@@ -9,10 +9,14 @@
 
   <body>
     <pre id="readout">Waiting for data...</pre>
+    <pre id="readout2">Waiting for data...</pre>
     <script>
       grist.ready();
       grist.onRecords(function (records) {
         document.getElementById('readout').innerHTML = JSON.stringify(records, null, 2);
+      });
+      grist.on('message', msg => {
+        document.getElementById('readout2').innerHTML = JSON.stringify(msg, null, 2);
       });
     </script>
   </body>
